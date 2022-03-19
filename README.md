@@ -73,7 +73,7 @@ Below are sample API Routes that can be tested:
 
 * `GET` to get a single thought by its `_id`
 
-* `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
+* `POST` to create a new thought 
 
 ```json
 // example data
