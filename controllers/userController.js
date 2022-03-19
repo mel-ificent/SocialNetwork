@@ -29,14 +29,13 @@ module.exports = {
   },
   // Get a single user
   getSingleUser(req, res) {
-    User.findOne({ _id: req.params.username })
+    User.findOne({ _id: req.params.UserId })
       .select('-__v')
       .then(async (user) =>
         !user
-          ? res.status(404).json({ message: 'No user with that username' })
+          ? res.status(404).json({ message: 'No user with that user ID' })
           : res.json({
-              user,
-              reaction: await reaction(req.params.username),
+              user
             })
       )
       .catch((err) => {
