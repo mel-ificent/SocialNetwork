@@ -43,6 +43,28 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+
+
+  //Update user
+  updateUser(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.params.UserId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      )
+      .select('-__v')
+      .then(async (user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with that user ID' })
+          : res.json({
+              user
+            })
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
   // create a new user
   createUser(req, res) {
     User.create(req.body)
@@ -51,13 +73,13 @@ module.exports = {
   },
   // Delete a user 
   deleteUser(req, res) {
-    User.findOneAndRemove({ _id: req.params.username })
+    User.findOneAndRemove({ _id: req.params.UserId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No such user exists' })
           : Thought.findOneAndUpdate(
-              { users: req.params.username },
-              { $pull: { users: req.params.username } },
+              { users: req.params.UserId },
+              { $pull: { users: req.params.UserId } },
               { new: true }
             )
       )
@@ -79,7 +101,7 @@ module.exports = {
     console.log('You are adding a thought');
     console.log(req.body);
     User.findOneAndUpdate(
-      { _id: req.params.username },
+      { _id: req.params.UserId },
       { $addToSet: { thoughts: req.body } },
       { runValidators: true, new: true }
     )
@@ -87,7 +109,7 @@ module.exports = {
         !user
           ? res
               .status(404)
-              .json({ message: 'No user found with that ID :(' })
+              .json({ message: 'No user found with that ID' })
           : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
