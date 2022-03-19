@@ -3,9 +3,11 @@ const { User, Thought } = require('../models');
 const reaction = async (username) =>
   User.aggregate([
     {
+        //creates a copy of each user with a unique reaction in each document
       $unwind: '$reactions',
     },
     {
+        //group doucment by id
       $group: { _id: username, reaction: reactionBody },
     },
   ]);
@@ -30,7 +32,7 @@ module.exports = {
     User.findOne({ _id: req.params.username })
       .select('-__v')
       .then(async (user) =>
-        !student
+        !user
           ? res.status(404).json({ message: 'No user with that username' })
           : res.json({
               user,
