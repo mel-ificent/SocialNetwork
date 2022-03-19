@@ -48,16 +48,14 @@ Below are sample API Routes that can be tested:
 ```json
 // example data
 {
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
+  "username": "socialbutterfly",
+  "email": "socialbutterfly@email.com"
 }
 ```
 
 * `PUT` to update a user by its `_id`
 
 * `DELETE` to remove user by its `_id`
-
-**BONUS**: Remove a user's associated thoughts when deleted.
 
 ---
 
@@ -80,8 +78,8 @@ Below are sample API Routes that can be tested:
 ```json
 // example data
 {
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
+  "thoughtText": "Here's a new thought!",
+  "username": "socialbutterfly",
   "userId": "5edff358a0fcb779aa7b118b"
 }
 ```
