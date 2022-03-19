@@ -117,7 +117,7 @@ No test scripts for this application.
 
 
 ## Video Walkthrough
-[Video Walkthrough]()
+[Video Walkthrough](https://watch.screencastify.com/v/X2TpFVYr77A1noxnIm53)
 
 ## Questions
 Contact Details:
