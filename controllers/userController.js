@@ -73,7 +73,7 @@ module.exports = {
       });
   },
 
-  // Add an assignment to a student
+  // Add an thought to a user
   addThought(req, res) {
     console.log('You are adding a thought');
     console.log(req.body);
